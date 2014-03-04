@@ -16,12 +16,15 @@ public class FreemakerTest {
 	@Test
 	public void test() {
 		Map root = new HashMap();
-		root.put("user", "admin");
+		root.put("user", "alwv");
+		root.put("person","adminer");
+		root.put("firstname","alw");
+		root.put("lastname","isk");
+		root.put("maidenname","dddd");
 		Map latest = new HashMap();
 		root.put("latestProduct", latest);
 		latest.put("url", "/html/main.html");
 		latest.put("name", "green mouse");
-		System.out.println(root);
 		try {
 			Template temp = Freemaker.cfg.getTemplate("test.ftl");
 			Writer out = new OutputStreamWriter(System.out);
@@ -33,5 +36,5 @@ public class FreemakerTest {
 			e.printStackTrace();
 		}
 	}
-
+	
 }
