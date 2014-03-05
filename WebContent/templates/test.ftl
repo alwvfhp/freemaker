@@ -1,7 +1,10 @@
 Your name is ${user}!
 Url : ${latestProduct.url}!
 name : ${latestProduct.name}!
+<#include "function.ftl">
 
+最大值是:${Max(100,5)}.
+<#compress>
 <#--
 <#assign x=1>
 
@@ -61,11 +64,40 @@ name : ${latestProduct.name}!
 ${my.value}
 <#include "tail.ftl">
 
--->
 <#compress>
 <#escape x as x?html>
 	First name : ${firstname}
 	Last  name : ${lastname}
 	Maidenname : ${maidenname}
 </#escape>
+</#compress>
+
+-->
+
+<#macro repeat begin end>
+	<#compress>
+	<ol>
+	<#list  begin..end as x>
+		<ul>${x}</ul>
+	</#list>
+	</ol>
+	</#compress>
+</#macro>
+
+<@repeat begin=5 end=6>
+	
+</@repeat>
+
+
+<#macro test>
+	第一次:<#nested "firstname">
+	第二次:<#nested "lastname">
+</#macro>
+
+<@test ; message>${message}.firstname
+</@>
+this is interaction
+<@test>lastname
+</@>
+
 </#compress>
